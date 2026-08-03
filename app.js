@@ -195,19 +195,19 @@ class Database {
 
 const utils = {
     zodiacSigns: [
-        { name: 'Capricornio', symbol: '♑', start: [1, 1], end: [1, 19] },
-        { name: 'Acuario', symbol: '♒', start: [1, 20], end: [2, 18] },
-        { name: 'Piscis', symbol: '♓', start: [2, 19], end: [3, 20] },
+        { name: 'Capricorn', symbol: '♑', start: [1, 1], end: [1, 19] },
+        { name: 'Aquarius', symbol: '♒', start: [1, 20], end: [2, 18] },
+        { name: 'Pisces', symbol: '♓', start: [2, 19], end: [3, 20] },
         { name: 'Aries', symbol: '♈', start: [3, 21], end: [4, 19] },
-        { name: 'Tauro', symbol: '♉', start: [4, 20], end: [5, 20] },
-        { name: 'Géminis', symbol: '♊', start: [5, 21], end: [6, 20] },
-        { name: 'Cáncer', symbol: '♋', start: [6, 21], end: [7, 22] },
+        { name: 'Taurus', symbol: '♉', start: [4, 20], end: [5, 20] },
+        { name: 'Gemini', symbol: '♊', start: [5, 21], end: [6, 20] },
+        { name: 'Cancer', symbol: '♋', start: [6, 21], end: [7, 22] },
         { name: 'Leo', symbol: '♌', start: [7, 23], end: [8, 22] },
         { name: 'Virgo', symbol: '♍', start: [8, 23], end: [9, 22] },
         { name: 'Libra', symbol: '♎', start: [9, 23], end: [10, 22] },
-        { name: 'Escorpio', symbol: '♏', start: [10, 23], end: [11, 21] },
-        { name: 'Sagitario', symbol: '♐', start: [11, 22], end: [12, 21] },
-        { name: 'Capricornio', symbol: '♑', start: [12, 22], end: [12, 31] }
+        { name: 'Scorpio', symbol: '♏', start: [10, 23], end: [11, 21] },
+        { name: 'Sagittarius', symbol: '♐', start: [11, 22], end: [12, 21] },
+        { name: 'Capricorn', symbol: '♑', start: [12, 22], end: [12, 31] }
     ],
 
     parseLocalDate(dateStr) {
@@ -282,7 +282,7 @@ const utils = {
     },
 
     formatDate(date) {
-        return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
+        return date.toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
     },
 
     categoryIcons: {
@@ -354,11 +354,11 @@ class SwipeToDelete {
                 if (!this.element.querySelector('.swipe-delete')) {
                     const deleteBtn = document.createElement('div');
                     deleteBtn.className = 'swipe-delete';
-                    deleteBtn.innerHTML = 'Eliminar';
+                    deleteBtn.innerHTML = 'Delete';
                     deleteBtn.addEventListener('click', (e) => {
                         e.stopPropagation();
                         haptic.trigger('delete');
-                        if (confirm('¿Eliminar este cumpleaños?')) {
+                        if (confirm('Delete this birthday?')) {
                             this.onDelete();
                         } else {
                             this.reset();
@@ -449,9 +449,9 @@ class UIController {
         const toggle = document.getElementById('darkModeToggle');
         const value = document.getElementById('darkModeValue');
         if (toggle) toggle.classList.toggle('active', !isDark);
-        if (value) value.textContent = !isDark ? 'Activado' : 'Desactivado';
+        if (value) value.textContent = !isDark ? 'On' : 'Off';
 
-        this.showToast(newMode === 'dark' ? 'Modo oscuro activado' : 'Modo claro activado');
+        this.showToast(newMode === 'dark' ? 'Dark mode enabled' : 'Light mode enabled');
     }
 
     // SETTINGS
@@ -468,17 +468,17 @@ class UIController {
             const darkToggle = document.getElementById('darkModeToggle');
             const darkValue = document.getElementById('darkModeValue');
             if (darkToggle) darkToggle.classList.toggle('active', isDark);
-            if (darkValue) darkValue.textContent = isDark ? 'Activado' : 'Desactivado';
+            if (darkValue) darkValue.textContent = isDark ? 'On' : 'Off';
 
             const notifToggle = document.getElementById('notifToggle');
             const notifValue = document.getElementById('notifValue');
             if (notifToggle) notifToggle.classList.toggle('active', notifEnabled);
-            if (notifValue) notifValue.textContent = notifEnabled ? 'Activadas' : 'Desactivadas';
+            if (notifValue) notifValue.textContent = notifEnabled ? 'On' : 'Off';
 
             const remindersValue = document.getElementById('remindersValue');
             if (remindersValue) {
-                const labels = { 0: 'El mismo día', 1: '1 día antes', 3: '3 días antes', 7: '1 semana antes', 14: '2 semanas antes' };
-                remindersValue.textContent = labels[reminderDays] || '1 día antes';
+                const labels = { 0: 'On the day', 1: '1 day before', 3: '3 days before', 7: '1 week before', 14: '2 weeks before' };
+                remindersValue.textContent = labels[reminderDays] || '1 day before';
             }
         } catch (e) {
             console.error('Error cargando settings:', e);
@@ -507,14 +507,14 @@ class UIController {
 
     async toggleNotifications() {
         if (!('Notification' in window)) {
-            this.showToast('Notificaciones no soportadas en este navegador');
+            this.showToast('Notifications not supported in this browser');
             return;
         }
 
         if (this.notificationsEnabled) {
             this.notificationsEnabled = false;
             await this.app.db.saveSetting('notifications', false);
-            this.showToast('Notificaciones desactivadas');
+            this.showToast('Notifications disabled');
         } else {
             const permission = await Notification.requestPermission();
             if (permission === 'granted') {
@@ -526,14 +526,14 @@ class UIController {
                     navigator.serviceWorker.controller.postMessage({
                         type: 'SHOW_NOTIFICATION',
                         title: 'Birthdays',
-                        body: '¡Notificaciones activadas! Recibirás alertas nativas de iOS.',
+                        body: 'Notifications enabled! You will receive native iOS alerts.',
                         icon: 'assets/icons/icon-192x192.png'
                     });
                 }
 
-                this.showToast('Notificaciones activadas');
+                this.showToast('Notifications enabled');
             } else {
-                this.showToast('Permiso denegado. Ve a Ajustes de iOS > Notificaciones > Birthdays');
+                this.showToast('Permission denied. Go to iOS Settings > Notifications > Birthdays');
                 return;
             }
         }
@@ -541,7 +541,7 @@ class UIController {
         const toggle = document.getElementById('notifToggle');
         const value = document.getElementById('notifValue');
         if (toggle) toggle.classList.toggle('active', this.notificationsEnabled);
-        if (value) value.textContent = this.notificationsEnabled ? 'Activadas' : 'Desactivadas';
+        if (value) value.textContent = this.notificationsEnabled ? 'On' : 'Off';
 
         haptic.trigger('medium');
     }
@@ -588,12 +588,12 @@ class UIController {
     async saveReminders() {
         await this.app.db.saveSetting('reminderDays', this.selectedReminderDays);
 
-        const labels = { 0: 'El mismo día', 1: '1 día antes', 3: '3 días antes', 7: '1 semana antes', 14: '2 semanas antes' };
+        const labels = { 0: 'On the day', 1: '1 day before', 3: '3 days before', 7: '1 week before', 14: '2 weeks before' };
         const remindersValue = document.getElementById('remindersValue');
         if (remindersValue) remindersValue.textContent = labels[this.selectedReminderDays];
 
         this.closeRemindersModal();
-        this.showToast('Recordatorios actualizados');
+        this.showToast('Reminders updated');
         haptic.trigger('success');
     }
 
@@ -620,11 +620,11 @@ class UIController {
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
 
-            this.showToast('Backup descargado');
+            this.showToast('Backup downloaded');
             haptic.trigger('success');
         } catch (e) {
             console.error('Error en backup:', e);
-            this.showToast('Error al hacer backup');
+            this.showToast('Error creating backup');
         }
     }
 
@@ -642,10 +642,10 @@ class UIController {
                 const data = JSON.parse(text);
 
                 if (!data.people || !Array.isArray(data.people)) {
-                    throw new Error('Formato inválido');
+                    throw new Error('Invalid format');
                 }
 
-                if (confirm(`¿Restaurar ${data.people.length} contactos? Esto reemplazará los datos actuales.`)) {
+                if (confirm(`Restore ${data.people.length} contacts? This will replace current data.`)) {
                     // Limpiar datos actuales
                     for (const person of this.app.people) {
                         await this.app.db.deletePerson(person.id);
@@ -672,12 +672,12 @@ class UIController {
                     await this.app.loadData();
                     this.render();
                     this.loadSettings();
-                    this.showToast('Datos restaurados');
+                    this.showToast('Data restored');
                     haptic.trigger('success');
                 }
             } catch (err) {
                 console.error('Error restaurando:', err);
-                this.showToast('Error al restaurar backup');
+                this.showToast('Error restoring backup');
             }
         };
 
@@ -734,7 +734,7 @@ class UIController {
             todaySection.classList.toggle('hidden', todayBirthdays.length === 0);
             const todayNames = document.getElementById('todayNames');
             if (todayNames && todayBirthdays.length > 0) {
-                todayNames.textContent = todayBirthdays.map(p => p.name).join(' y ');
+                todayNames.textContent = todayBirthdays.map(p => p.name).join(' and ');
             }
         }
 
@@ -761,9 +761,9 @@ class UIController {
             item.onclick = () => this.showEditModal(p.id);
 
             let badge = '';
-            if (days === 0) badge = '<span class="badge-ios">Hoy</span>';
-            else if (days === 1) badge = '<span class="badge-ios">Mañana</span>';
-            else if (days <= 7) badge = `<span class="badge-ios badge-ios-blue">${days} días</span>`;
+            if (days === 0) badge = '<span class="badge-ios">Today</span>';
+            else if (days === 1) badge = '<span class="badge-ios">Tomorrow</span>';
+            else if (days <= 7) badge = `<span class="badge-ios badge-ios-blue">${days} days</span>`;
 
             item.innerHTML = `
                 <div class="avatar-ios avatar-ios-small">${p.name.charAt(0)}</div>
@@ -774,7 +774,7 @@ class UIController {
                     </div>
                     <div class="text-callout flex items-center gap-1" style="color: var(--text-secondary);">
                         <span class="flex items-center">${categoryIcon}</span>
-                        <span>${zodiac.symbol} Cumple ${nextAge} • ${birthDate.getDate()} ${birthDate.toLocaleDateString('es-ES', {month:'short'})}</span>
+                        <span>${zodiac.symbol} Turns ${nextAge} • ${birthDate.getDate()} ${birthDate.toLocaleDateString('en-US', {month:'short'})}</span>
                     </div>
                     ${p.notes ? `<div class="text-footnote mt-1 truncate">${p.notes}</div>` : ''}
                 </div>
@@ -811,7 +811,7 @@ class UIController {
     showAddModal() {
         this.editingId = null;
         this._resetForm();
-        document.getElementById('modalTitle').textContent = 'Nuevo';
+        document.getElementById('modalTitle').textContent = 'New';
         document.getElementById('deleteBtn')?.classList.add('hidden');
         document.getElementById('shareBtnContainer')?.classList.add('hidden');
         document.getElementById('calendarBtnContainer')?.classList.add('hidden');
@@ -828,7 +828,7 @@ class UIController {
         if (!p) return;
 
         this.editingId = id;
-        document.getElementById('modalTitle').textContent = 'Editar';
+        document.getElementById('modalTitle').textContent = 'Edit';
         document.getElementById('personName').value = p.name;
         document.getElementById('birthDate').value = p.birthDate.split('T')[0];
         document.getElementById('category').value = p.category;
@@ -905,7 +905,7 @@ class UIController {
                 return utils.getDaysUntil(utils.parseLocalDate(a.birthDate)) - utils.getDaysUntil(utils.parseLocalDate(b.birthDate));
             });
             const days = utils.getDaysUntil(utils.parseLocalDate(sorted[0].birthDate));
-            nextPerson = days === 0 ? '¡Hoy!' : `${days} ${days === 1 ? 'día' : 'días'}`;
+            nextPerson = days === 0 ? 'Today!' : `${days} ${days === 1 ? 'day' : 'days'}`;
         }
 
         document.getElementById('statTotal').textContent = total;
@@ -934,8 +934,8 @@ class UIController {
         const today = new Date();
         const currentMonth = today.getMonth();
         const months = {};
-        const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
-                           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                           'July', 'August', 'September', 'October', 'November', 'December'];
 
         sorted.forEach(person => {
             const birthDate = utils.parseLocalDate(person.birthDate);
@@ -964,8 +964,8 @@ class UIController {
                 <div class="timeline-month ${isCurrentMonth ? 'current-month' : ''}">
                     <div class="timeline-month-header">
                         <span class="month-name">${monthNames[monthIndex]}</span>
-                        ${isCurrentMonth ? '<span class="current-badge">Actual</span>' : ''}
-                        <span class="month-count">${monthPeople.length} cumpleaños</span>
+                        ${isCurrentMonth ? '<span class="current-badge">Current</span>' : ''}
+                        <span class="month-count">${monthPeople.length} ${monthPeople.length === 1 ? 'birthday' : 'birthdays'}</span>
                     </div>
                     <div class="timeline-events">
                         ${monthPeople.map(person => {
@@ -977,13 +977,13 @@ class UIController {
                                 <div class="timeline-event ${isToday ? 'today' : ''}" onclick="app.ui.showEditModal('${person.id}')">
                                     <div class="event-date">
                                         <span class="day-number">${person.nextBirthday.getDate()}</span>
-                                        <span class="day-name">${person.nextBirthday.toLocaleDateString('es-ES', {weekday: 'short'})}</span>
+                                        <span class="day-name">${person.nextBirthday.toLocaleDateString('en-US', {weekday: 'short'})}</span>
                                     </div>
                                     <div class="event-content">
                                         <div class="event-name">${person.name}</div>
                                         <div class="event-details">
-                                            ${zodiac.symbol} ${zodiac.name} • Cumple ${person.age}
-                                            ${person.daysUntil > 0 ? `• En ${person.daysUntil} días` : ''}
+                                            ${zodiac.symbol} ${zodiac.name} • Turns ${person.age}
+                                            ${person.daysUntil > 0 ? `• In ${person.daysUntil} ${person.daysUntil === 1 ? 'day' : 'days'}` : ''}
                                         </div>
                                     </div>
                                 </div>
@@ -994,7 +994,7 @@ class UIController {
             `;
         });
 
-        content.innerHTML = html || '<div class="text-center py-12 text-footnote">No hay cumpleaños registrados</div>';
+        content.innerHTML = html || '<div class="text-center py-12 text-footnote">No birthdays registered</div>';
         modal.classList.remove('hidden');
 
         setTimeout(() => {
@@ -1028,7 +1028,7 @@ class UIController {
             todayBirthdays.forEach(person => {
                 const birthDate = utils.parseLocalDate(person.birthDate);
                 const age = utils.calculateAge(birthDate);
-                this.showToast(`🎉 ${person.name} cumple ${age} años hoy!`);
+                this.showToast(`🎉 ${person.name} turns ${age} today!`);
             });
             this.createConfetti();
         }
@@ -1085,7 +1085,7 @@ class CalendarManager {
         const icsContent = this._generateICS(person, nextBirthday, age);
         this._download(icsContent, `cumpleanos-${person.name.replace(/\s+/g, '-').toLowerCase()}.ics`);
 
-        this.app.ui.showToast('Calendario descargado');
+        this.app.ui.showToast('Calendar downloaded');
         haptic.trigger('success');
     }
 
@@ -1105,7 +1105,7 @@ class CalendarManager {
         return [
             'BEGIN:VCALENDAR',
             'VERSION:2.0',
-            'PRODID:-//Birthdays App//ES',
+            'PRODID:-//Birthdays App//EN',
             'CALSCALE:GREGORIAN',
             'METHOD:PUBLISH',
             'BEGIN:VEVENT',
@@ -1113,12 +1113,12 @@ class CalendarManager {
             `DTSTAMP:${now}`,
             `DTSTART;VALUE=DATE:${startDate}`,
             `DTEND;VALUE=DATE:${endDateStr}`,
-            `SUMMARY:🎂 Cumpleaños de ${person.name}`,
-            `DESCRIPTION:Cumple ${age} años\n${person.notes ? 'Notas: ' + person.notes : ''}`,
+            `SUMMARY:🎂 ${person.name}'s Birthday`,
+            `DESCRIPTION:Turns ${age} years old\n${person.notes ? 'Notes: ' + person.notes : ''}`,
             'RRULE:FREQ=YEARLY',
             'BEGIN:VALARM',
             'ACTION:DISPLAY',
-            'DESCRIPTION:Recordatorio de cumpleaños',
+            'DESCRIPTION:Birthday reminder',
             'TRIGGER:-P1D',
             'END:VALARM',
             'END:VEVENT',
@@ -1163,21 +1163,21 @@ class ShareManager {
         let message = '';
 
         if (days === 0) {
-            message = `🎉 ¡Hoy es el cumpleaños de ${person.name}! Cumple ${age} años. ¡No olvides felicitarle! 🎂`;
+            message = `🎉 Today is ${person.name}'s birthday! Turning ${age} years old. Don't forget to congratulate them! 🎂`;
         } else if (days === 1) {
-            message = `📅 Mañana cumple ${person.name} ${age} años. ¡Prepárate para felicitarle! 🎉`;
+            message = `📅 Tomorrow ${person.name} turns ${age} years old. Get ready to congratulate them! 🎉`;
         } else {
-            message = `📅 Cumpleaños de ${person.name} en ${days} días. Cumplirá ${age} años. ${zodiac.symbol} ${zodiac.name}`;
+            message = `📅 ${person.name}'s birthday in ${days} days. Will turn ${age} years old. ${zodiac.symbol} ${zodiac.name}`;
         }
 
         if (person.notes) {
-            message += `\n\n📝 Notas: ${person.notes}`;
+            message += `\n\n📝 Notes: ${person.notes}`;
         }
 
         const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
 
-        this.app.ui.showToast('Abriendo WhatsApp...');
+        this.app.ui.showToast('Opening WhatsApp...');
     }
 }
 
@@ -1206,10 +1206,10 @@ class BirthdayApp {
                 this.ui.init();
             }, CONFIG.SPLASH_DURATION);
 
-            console.log('✅ App inicializada');
+            console.log('✅ App initialized');
         } catch (error) {
-            console.error('Error inicializando app:', error);
-            this.ui.showToast('Error al iniciar la app');
+            console.error('Error initializing app:', error);
+            this.ui.showToast('Error starting app');
         }
     }
 
@@ -1229,7 +1229,7 @@ class BirthdayApp {
             btn.style.transition = 'transform 0.5s cubic-bezier(0.32, 0.72, 0, 1)';
         }
 
-        this.ui.showToast('Actualizando...');
+        this.ui.showToast('Updating...');
         await this.loadData();
         this.ui.render();
 
@@ -1243,7 +1243,7 @@ class BirthdayApp {
         const birthDate = document.getElementById('birthDate')?.value;
 
         if (!name || !birthDate) {
-            this.ui.showToast('Completa el nombre y fecha');
+            this.ui.showToast('Please enter name and date');
             haptic.trigger('error');
             return;
         }
@@ -1268,18 +1268,18 @@ class BirthdayApp {
 
             this.ui.render();
             this.ui.closeModal();
-            this.ui.showToast(this.ui.editingId ? 'Actualizado' : 'Añadido');
+            this.ui.showToast(this.ui.editingId ? 'Updated' : 'Added');
             haptic.trigger('success');
         } catch (e) {
             console.error('Error guardando:', e);
-            this.ui.showToast('Error al guardar');
+            this.ui.showToast('Error saving');
             haptic.trigger('error');
         }
     }
 
     async deletePerson() {
         if (!this.ui.editingId) return;
-        if (!confirm('¿Eliminar este cumpleaños?')) return;
+        if (!confirm('Delete this birthday?')) return;
 
         await this.deletePersonById(this.ui.editingId);
     }
@@ -1291,18 +1291,18 @@ class BirthdayApp {
 
             this.ui.render();
             this.ui.closeModal();
-            this.ui.showToast('Eliminado');
+            this.ui.showToast('Deleted');
             haptic.trigger('delete');
         } catch (e) {
             console.error('Error eliminando:', e);
-            this.ui.showToast('Error al eliminar');
+            this.ui.showToast('Error deleting');
         }
     }
 
     exportPDF() {
         const jsPDF = window.jspdf?.jsPDF;
         if (!jsPDF) {
-            this.ui.showToast('Error: Librería no cargada');
+            this.ui.showToast('Error: Library not loaded');
             return;
         }
 
@@ -1310,11 +1310,11 @@ class BirthdayApp {
             const doc = new jsPDF();
 
             doc.setFontSize(24);
-            doc.text('Mis Cumpleaños', 105, 20, { align: 'center' });
+            doc.text('My Birthdays', 105, 20, { align: 'center' });
 
             doc.setFontSize(12);
             doc.setTextColor(100);
-            doc.text(`Generado: ${new Date().toLocaleDateString('es-ES')}`, 105, 30, { align: 'center' });
+            doc.text(`Generated: ${new Date().toLocaleDateString('en-US')}`, 105, 30, { align: 'center' });
 
             let y = 50;
             const sorted = [...this.people].sort((a, b) => {
@@ -1338,17 +1338,17 @@ class BirthdayApp {
 
                 doc.setFontSize(10);
                 doc.setTextColor(100);
-                doc.text(`${birthDate.getDate()}/${birthDate.getMonth() + 1} • ${zodiac.symbol} ${zodiac.name} • Cumple ${age + 1} años • ${days === 0 ? '¡HOY!' : `En ${days} días`}`, 20, y + 6);
+                doc.text(`${birthDate.getDate()}/${birthDate.getMonth() + 1} • ${zodiac.symbol} ${zodiac.name} • Turns ${age + 1} • ${days === 0 ? 'TODAY!' : `In ${days} days`}`, 20, y + 6);
 
                 y += 20;
             });
 
-            doc.save('cumpleanos.pdf');
-            this.ui.showToast('PDF descargado');
+            doc.save('birthdays.pdf');
+            this.ui.showToast('PDF downloaded');
             haptic.trigger('success');
         } catch (e) {
             console.error('Error exportando PDF:', e);
-            this.ui.showToast('Error al exportar PDF');
+            this.ui.showToast('Error exporting PDF');
         }
     }
 }

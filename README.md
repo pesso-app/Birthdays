@@ -1,82 +1,83 @@
-# 🎂 Birthdays - Nunca olvides una fecha especial
+# 🎂 Birthdays - Never forget a special date
 
-**Birthdays** es una aplicación web progresiva (PWA) de estilo nativo iOS diseñada para gestionar, recordar y visualizar los cumpleaños de tus amigos, familiares y compañeros de trabajo de forma completamente privada, rápida y moderna. 
+**Birthdays** is an iOS native-style Progressive Web App (PWA) designed to manage, remember, and view the birthdays of your friends, family, and coworkers in a completely private, fast, and modern way.
 
-La app funciona de manera local en el dispositivo (sin servidores externos) utilizando tecnologías del navegador de última generación.
-
----
-
-## 🌟 Características Principales
-
-### 📱 Experiencia de Usuario (UX) de Nivel Nativo
-* **Diseño iOS 26 Style:** Interfaz con efectos de desenfoque de cristal (glassmorphism), tipografía moderna (Inter), transiciones fluidas y soporte completo para **Modo Oscuro** automático o manual.
-* **Respuesta Háptica:** Vibraciones sutiles (`vibrate` API) al presionar botones, eliminar o guardar datos para una sensación táctil premium en dispositivos móviles.
-* **Pantalla de Carga (Splash Screen):** Entrada limpia al abrir la aplicación desde la pantalla de inicio.
-* **Deslizar para Eliminar (Swipe to Delete):** Gesto móvil intuitivo en los elementos de la lista que revela un botón de eliminación rápida con cierre automático inteligente de otras tarjetas abiertas.
-
-### 📅 Gestión de Fechas e Información
-* **Visualización Dinámica:** Sección destacada de **HOY** con lluvia de confeti animada para celebrar a los cumpleañeros actuales.
-* **Clasificación y Filtros:** Organización rápida por categorías (Familia, Amigos, Trabajo, Otros) y sección de cumpleaños más cercanos en los próximos 30 días.
-* **Línea de Tiempo (Timeline):** Vista cronológica agrupada por meses que detalla el día, el día de la semana, los días restantes, la edad que cumplirá y el signo del zodiaco con su respectivo símbolo emoji.
-* **Estadísticas Avanzadas:** Análisis del total de contactos, promedio de edad actual, cantidad de cumpleaños en el mes actual y cuenta regresiva exacta para el cumpleaños más cercano.
-
-### 🚀 Integraciones y Exportación
-* **Compartir por WhatsApp:** Genera y abre automáticamente un mensaje personalizado con emojis adecuado para felicitar al contacto ("¡Hoy es el cumpleaños de...", "Mañana cumple...", etc.) o recordar la fecha.
-* **Agregar al Calendario (ICS):** Genera y descarga un archivo de calendario estándar compatible con Apple Calendar, Google Calendar y Microsoft Outlook, con recurrencia anual automática y alarma de recordatorio configurada para 1 día antes.
-* **Exportar a PDF:** Genera un documento PDF limpio y paginado con el listado completo de todos los cumpleaños y detalles de fechas y signos zodiacales.
-* **Copia de Seguridad (Backup):** Permite exportar todos los datos y configuraciones a un archivo JSON y restaurarlos en cualquier momento en cualquier otro dispositivo.
-
-### 🔒 Privacidad y PWA (Modo Offline)
-* **IndexedDB Local:** Almacenamiento directo en el navegador del dispositivo. Los datos son 100% privados y nunca viajan a ningún servidor web.
-* **Funcionamiento sin Conexión:** Registro de Service Worker v4 que almacena en caché la estructura HTML, las hojas de estilo y las librerías necesarias de CDN (incluyendo Tailwind CSS v4 y Google Fonts), permitiendo un acceso completo offline.
+The app works locally on the device (without external servers) using cutting-edge browser technologies.
 
 ---
 
-## 📁 Estructura del Proyecto
+## 🌟 Key Features
 
-* **[index.html](file:///c:/Users/Adriel/Desktop/bu/index.html):** Estructura del DOM, maquetación de modales, vistas dinámicas de estadísticas y Timeline.
-* **[app.js](file:///c:/Users/Adriel/Desktop/bu/app.js):** Controladores de interfaz (UIController), gestión del gesto táctil de deslizamiento (SwipeToDelete), utilidades de fechas, zodiaco, exportación de ICS y PDF, y lógica principal de IndexedDB.
-* **[style.css](file:///c:/Users/Adriel/Desktop/bu/style.css):** Hoja de estilos con variables CSS adaptadas para modos claro/oscuro, animaciones de confeti, efectos glassmorphism y adaptabilidad para áreas seguras de pantalla en móviles (Safe Areas de iOS).
-* **[sw.js](file:///c:/Users/Adriel/Desktop/bu/sw.js):** Service worker encargado de la estrategia de caché local, manejo de recursos externos de CDNs y notificaciones locales.
-* **[manifest.json](file:///c:/Users/Adriel/Desktop/bu/manifest.json):** Configuración de la aplicación web progresiva para permitir su instalación en dispositivos móviles como app de pantalla completa.
+### 📱 Native-Grade User Experience (UX)
+* **iOS Style Design:** Glassmorphism blur effects, modern typography (Inter), smooth transitions, and full support for automatic or manual **Dark Mode**.
+* **Haptic Feedback:** Subtle vibrations (`vibrate` API) when pressing buttons, deleting, or saving data for a premium tactile feel on mobile devices.
+* **Splash Screen:** Clean entry animation when launching the application from the home screen.
+* **Swipe to Delete:** Intuitive mobile gesture on list items revealing a quick delete button with smart auto-closing of other open cards.
+
+### 📅 Date & Information Management
+* **Dynamic Highlights:** Featured **TODAY** section with animated confetti burst to celebrate current birthday people.
+* **Categories & Filters:** Fast organization by categories (Family, Friends, Work, Others) and upcoming birthdays section for the next 30 days.
+* **Timeline View:** Chronological view grouped by months detailing the day, day of the week, remaining days, turning age, and zodiac sign with its emoji symbol.
+* **Advanced Statistics:** Analysis of total contacts, current average age, birthdays in the current month, and exact countdown to the closest birthday.
+
+### 🚀 Integrations & Exporting
+* **Share via WhatsApp:** Generates and automatically opens a custom message with appropriate emojis to wish a happy birthday ("Today is...", "Tomorrow...", etc.) or remind about the date.
+* **Add to Calendar (ICS):** Generates and downloads a standard calendar file compatible with Apple Calendar, Google Calendar, and Microsoft Outlook, featuring automatic yearly recurrence and a reminder alarm set for 1 day before.
+* **Export to PDF:** Generates a clean, paginated PDF document with the full list of all birthdays, date details, and zodiac signs.
+* **Data Backup:** Export all data and settings to a JSON file and restore them anytime on any device.
+
+### 🔒 Privacy & PWA (Offline Mode)
+* **Local IndexedDB:** Direct storage in the device's browser. Data is 100% private and never travels to any web server.
+* **Offline Functionality:** Service Worker v4 registration that caches HTML structure, stylesheets, and required CDN libraries (including Tailwind CSS v4 and Google Fonts), allowing complete offline access.
 
 ---
 
-## ⏳ Control de Versiones
+## 📁 Project Structure
 
-### `v2.1.0` (Versión Actual)
-* **Corrección de Zona Horaria:** Implementación de `utils.parseLocalDate` para corregir el bug de desfase de hora. Anteriormente, al guardar un cumpleaños, la fecha se interpretaba en formato UTC ISO, provocando que se mostrara el día anterior por la noche en zonas horarias de América (como GMT-4/5).
-* **Corrección del Zodiaco en Enero:** Se corrigió un solapamiento lógico en el recorrido de rangos de meses de `utils.getZodiac`. Anteriormente, cualquier fecha del 20 al 31 de enero se catalogaba incorrectamente como Capricornio en lugar de Acuario.
-* **Caché Completo Offline:** Se actualizó `sw.js` a la versión de caché `v4` y se corrigió el interceptor de fetch para permitir el almacenamiento de respuestas del tipo `'cors'` y `'opaque'`. Esto permite que Tailwind CSS v4 (de `cdn.jsdelivr.net`) y las fuentes tipográficas de Google Fonts (de `fonts.gstatic.com`) se almacenen localmente y funcionen sin internet.
-* **Correcciones Visuales:** 
-  * Se corrigió la pluralización de estadísticas para cumpleaños a 1 día de distancia ("1 día" en lugar de "1 días").
-  * Se optimizó el gesto Swipe de las tarjetas de lista para que al deslizar una nueva se cierre automáticamente cualquier otra tarjeta abierta previamente.
+* **[index.html](file:///c:/Users/Adriel/Desktop/2027/Codes/Projects/Birthday/birthday-v2.0/index.html):** DOM structure, modal layout, dynamic statistics views, and Timeline.
+* **[app.js](file:///c:/Users/Adriel/Desktop/2027/Codes/Projects/Birthday/birthday-v2.0/app.js):** Interface controllers (UIController), touch gesture management (SwipeToDelete), date utilities, zodiac, ICS and PDF export, and IndexedDB core logic.
+* **[style.css](file:///c:/Users/Adriel/Desktop/2027/Codes/Projects/Birthday/birthday-v2.0/style.css):** Stylesheet with CSS variables adapted for light/dark modes, confetti animations, glassmorphism effects, and responsiveness for mobile safe areas (iOS Safe Areas).
+* **[sw.js](file:///c:/Users/Adriel/Desktop/2027/Codes/Projects/Birthday/birthday-v2.0/sw.js):** Service worker managing local caching strategy, external CDN resources, and local notifications.
+* **[manifest.json](file:///c:/Users/Adriel/Desktop/2027/Codes/Projects/Birthday/birthday-v2.0/manifest.json):** Progressive Web App configuration enabling installation on mobile devices as a full-screen app.
+
+---
+
+## ⏳ Version History
+
+### `v2.1.0` (Current Version)
+* **English Translation:** Full internationalization of the app UI, settings, notifications, export tools (PDF, ICS, WhatsApp), and documentation into English.
+* **Time Zone Correction:** Implementation of `utils.parseLocalDate` fixing timezone offset bugs. Previously, saving a birthday interpreted dates in UTC ISO format, causing them to show the previous day's evening in American timezones (such as GMT-4/5).
+* **January Zodiac Fix:** Resolved logical overlap in `utils.getZodiac` month range iterations. Previously, dates between January 20th and 31st were incorrectly categorized as Capricorn instead of Aquarius.
+* **Full Offline Cache:** Updated `sw.js` to cache version `v4` and fixed the fetch interceptor to allow caching `'cors'` and `'opaque'` response types. This allows Tailwind CSS v4 (`cdn.jsdelivr.net`) and Google Fonts (`fonts.gstatic.com`) to be stored locally and work without internet.
+* **Visual Fixes:**
+  * Fixed stat pluralization for birthdays 1 day away ("1 day" instead of "1 days").
+  * Optimized list card Swipe gesture so sliding a new card automatically closes any previously opened card.
 
 ### `v2.0.0`
-* Incorporación de estadísticas avanzadas y modales interactivos.
-* Implementación de la vista cronológica mensual (Timeline).
-* Integración con la API de WhatsApp y exportación dinámica de archivos ICS para calendarios móviles.
-* Exportación de listados de cumpleaños a documentos PDF nativos utilizando la librería `jsPDF`.
+* Added advanced statistics and interactive modals.
+* Implemented monthly chronological view (Timeline).
+* Integration with WhatsApp API and dynamic ICS file export for mobile calendars.
+* Export birthday lists to native PDF documents using `jsPDF`.
 
 ### `v1.0.0`
-* Lanzamiento inicial de la aplicación.
-* Base de datos local en IndexedDB.
-* Registro y edición de contactos (Nombre, Fecha de nacimiento, Categoría y Notas).
-* Filtros rápidos en la lista por categorías (Familia, Amigos, Trabajo).
+* Initial application launch.
+* Local database on IndexedDB.
+* Contact registration and editing (Name, Birthdate, Category, and Notes).
+* Quick list filtering by categories (Family, Friends, Work).
 
 ---
 
-## 🛠️ Instalación y Uso Local
+## 🛠️ Installation & Local Usage
 
-Para ejecutar la aplicación localmente:
-1. Clona o copia los archivos del proyecto a un directorio local.
-2. Inicia un servidor web estático en el directorio raíz. Por ejemplo:
+To run the application locally:
+1. Clone or copy project files to a local directory.
+2. Start a static web server in the root directory. For example:
    ```bash
-   # Usando http-server de Node.js
+   # Using Node.js http-server
    npx http-server -p 8080
    
-   # O usando Python
+   # Or using Python
    python -m http.server 8080
    ```
-3. Abre tu navegador y navega a `http://localhost:8080`.
-4. Para instalarla en dispositivos móviles, selecciona **"Compartir > Añadir a la pantalla de inicio"** (en iOS/Safari) o presiona el botón **"Instalar aplicación"** (en Android/Chrome).
+3. Open your browser and navigate to `http://localhost:8080`.
+4. To install on mobile devices, select **"Share > Add to Home Screen"** (on iOS/Safari) or tap **"Install app"** (on Android/Chrome).

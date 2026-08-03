@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -28,7 +28,7 @@
         <div class="splash-content">
             <img src="icon.png" alt="Birthdays" class="w-20 h-20 rounded-2xl mx-auto mb-4 shadow-md object-cover">
             <h1 class="splash-title">Birthdays</h1>
-            <p class="splash-subtitle">Nunca olvides una fecha especial</p>
+            <p class="splash-subtitle">Never forget a special date</p>
         </div>
     </div>
 
@@ -40,14 +40,14 @@
             </div>
 
             <div class="flex items-center gap-1">
-                <button onclick="app.ui.showSettings()" class="header-btn" title="Ajustes" data-haptic="light">
+                <button onclick="app.ui.showSettings()" class="header-btn" title="Settings" data-haptic="light">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                     </svg>
                 </button>
 
-                <button onclick="app.ui.showStats()" class="header-btn" title="Estadísticas" data-haptic="light">
+                <button onclick="app.ui.showStats()" class="header-btn" title="Statistics" data-haptic="light">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                     </svg>
@@ -59,7 +59,7 @@
                     </svg>
                 </button>
 
-                <button onclick="app.refresh()" class="header-btn" id="refreshBtn" title="Actualizar" data-haptic="medium">
+                <button onclick="app.refresh()" class="header-btn" id="refreshBtn" title="Refresh" data-haptic="medium">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                     </svg>
@@ -72,7 +72,7 @@
             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--text-tertiary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
-            <input type="text" id="searchInput" placeholder="Buscar contactos..." 
+            <input type="text" id="searchInput" placeholder="Search contacts..." 
                    class="bg-transparent border-none outline-none text-body flex-1 placeholder-ios theme-transition"
                    style="color: var(--text-primary);"
                    oninput="app.ui.search(this.value)">
@@ -113,10 +113,10 @@
                 <div class="relative z-10">
                     <div class="flex items-center gap-3 mb-2">
                         <span class="text-3xl">🎉</span>
-                        <span class="badge-ios">HOY</span>
+                        <span class="badge-ios">TODAY</span>
                     </div>
                     <h2 id="todayNames" class="text-title-1 mb-1" style="color: var(--text-primary);"></h2>
-                    <p class="text-footnote">¡No olvides felicitarles!</p>
+                    <p class="text-footnote">Don't forget to congratulate them!</p>
                 </div>
             </div>
         </div>
@@ -124,10 +124,10 @@
         <!-- Segmented Control -->
         <div class="segment-ios mb-6 theme-transition">
             <div class="segment-indicator" id="segmentIndicator"></div>
-            <button onclick="app.ui.filter('all')" class="segment-btn active" data-filter="all">Todos</button>
-            <button onclick="app.ui.filter('family')" class="segment-btn" data-filter="family">Familia</button>
-            <button onclick="app.ui.filter('friends')" class="segment-btn" data-filter="friends">Amigos</button>
-            <button onclick="app.ui.filter('upcoming')" class="segment-btn" data-filter="upcoming">Pronto</button>
+            <button onclick="app.ui.filter('all')" class="segment-btn active" data-filter="all">All</button>
+            <button onclick="app.ui.filter('family')" class="segment-btn" data-filter="family">Family</button>
+            <button onclick="app.ui.filter('friends')" class="segment-btn" data-filter="friends">Friends</button>
+            <button onclick="app.ui.filter('upcoming')" class="segment-btn" data-filter="upcoming">Upcoming</button>
         </div>
 
         <!-- List -->
@@ -143,13 +143,13 @@
                     <span></span><span></span><span></span><span></span><span></span>
                 </div>
             </div>
-            <h2 class="text-title-2 mb-2" style="color: var(--text-primary);">Sin cumpleaños</h2>
+            <h2 class="text-title-2 mb-2" style="color: var(--text-primary);">No birthdays</h2>
             <p class="text-footnote mb-8 max-w-xs mx-auto" style="color: var(--text-secondary);">
-                Añade tus contactos para recordar sus fechas especiales
+                Add your contacts to remember their special dates
             </p>
             <button onclick="app.ui.showAddModal()" class="btn-ios px-8 py-4 rounded-2xl font-semibold text-body inline-flex items-center gap-2" data-haptic="medium">
                 <span>+</span>
-                Añadir Contacto
+                Add Contact
             </button>
         </div>
 
@@ -170,9 +170,9 @@
             </div>
 
             <div class="px-6 pb-4 flex items-center justify-between">
-                <button onclick="app.ui.closeModal()" class="text-title-3" style="color: var(--text-secondary);">Cancelar</button>
-                <h2 id="modalTitle" class="text-title-2" style="color: var(--text-primary);">Nuevo</h2>
-                <button onclick="app.savePerson()" class="text-title-3 font-semibold" style="color: var(--ios-blue);">Guardar</button>
+                <button onclick="app.ui.closeModal()" class="text-title-3" style="color: var(--text-secondary);">Cancel</button>
+                <h2 id="modalTitle" class="text-title-2" style="color: var(--text-primary);">New</h2>
+                <button onclick="app.savePerson()" class="text-title-3 font-semibold" style="color: var(--ios-blue);">Save</button>
             </div>
 
             <div class="px-6 pb-8 space-y-6">
@@ -184,29 +184,29 @@
 
                 <div class="space-y-4">
                     <div>
-                        <label class="text-caption mb-2 block">Nombre</label>
-                        <input type="text" id="personName" class="input-ios theme-transition" placeholder="Nombre completo" oninput="app.ui.updateAvatar()">
+                        <label class="text-caption mb-2 block">Name</label>
+                        <input type="text" id="personName" class="input-ios theme-transition" placeholder="Full name" oninput="app.ui.updateAvatar()">
                     </div>
 
                     <div class="form-row">
                         <div class="form-col">
-                            <label class="text-caption mb-2 block">Fecha</label>
+                            <label class="text-caption mb-2 block">Date</label>
                             <input type="date" id="birthDate" class="input-ios theme-transition">
                         </div>
                         <div class="form-col">
-                            <label class="text-caption mb-2 block">Tipo</label>
+                            <label class="text-caption mb-2 block">Type</label>
                             <select id="category" class="input-ios theme-transition appearance-none">
-                                <option value="family">Familia</option>
-                                <option value="friends">Amigos</option>
-                                <option value="work">Trabajo</option>
-                                <option value="other">Otros</option>
+                                <option value="family">Family</option>
+                                <option value="friends">Friends</option>
+                                <option value="work">Work</option>
+                                <option value="other">Others</option>
                             </select>
                         </div>
                     </div>
 
                     <div>
-                        <label class="text-caption mb-2 block">Notas</label>
-                        <textarea id="notes" rows="4" class="input-ios resize-none theme-transition" placeholder="Ideas de regalo..."></textarea>
+                        <label class="text-caption mb-2 block">Notes</label>
+                        <textarea id="notes" rows="4" class="input-ios resize-none theme-transition" placeholder="Gift ideas..."></textarea>
                     </div>
                 </div>
 
@@ -217,7 +217,7 @@
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                         </svg>
-                        Compartir por WhatsApp
+                        Share via WhatsApp
                     </button>
                 </div>
 
@@ -228,13 +228,13 @@
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
-                        Agregar al Calendario
+                        Add to Calendar
                     </button>
                 </div>
 
                 <button onclick="app.deletePerson()" id="deleteBtn" class="w-full py-4 rounded-2xl font-semibold hidden active:scale-95 transition"
                         style="background: rgba(255, 69, 58, 0.1); color: #FF453A;" data-haptic="heavy">
-                    Eliminar Cumpleaños
+                    Delete Birthday
                 </button>
             </div>
         </div>
@@ -249,24 +249,24 @@
                 </svg>
             </button>
 
-            <h2 class="text-title-1 mb-6" style="color: var(--text-primary);">Estadísticas</h2>
+            <h2 class="text-title-1 mb-6" style="color: var(--text-primary);">Statistics</h2>
 
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <div class="glass-card p-4 text-center theme-transition stat-card">
                     <div class="text-title-1 mb-1" style="color: var(--ios-blue);" id="statTotal">0</div>
-                    <div class="text-footnote">Contactos</div>
+                    <div class="text-footnote">Contacts</div>
                 </div>
                 <div class="glass-card p-4 text-center theme-transition stat-card">
                     <div class="text-title-1 mb-1" style="color: var(--ios-pink);" id="statThisMonth">0</div>
-                    <div class="text-footnote">Este mes</div>
+                    <div class="text-footnote">This month</div>
                 </div>
                 <div class="glass-card p-4 text-center theme-transition stat-card">
                     <div class="text-title-1 mb-1" style="color: var(--ios-purple);" id="statAvgAge">0</div>
-                    <div class="text-footnote">Edad media</div>
+                    <div class="text-footnote">Average age</div>
                 </div>
                 <div class="glass-card p-4 text-center theme-transition stat-card">
                     <div class="text-title-1 mb-1" style="color: var(--ios-orange);" id="statNext">-</div>
-                    <div class="text-footnote">Próximo</div>
+                    <div class="text-footnote">Next</div>
                 </div>
             </div>
 
@@ -275,7 +275,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                 </svg>
-                Exportar a PDF
+                Export to PDF
             </button>
         </div>
     </div>
@@ -288,7 +288,7 @@
             </div>
 
             <div class="px-6 pb-4 flex items-center justify-between border-b" style="border-color: var(--separator);">
-                <h2 class="text-title-1" style="color: var(--text-primary);">Timeline de Cumpleaños</h2>
+                <h2 class="text-title-1" style="color: var(--text-primary);">Birthday Timeline</h2>
                 <button onclick="app.ui.closeTimeline()" class="p-2 rounded-full active:scale-90 transition" style="background: var(--bg-tertiary);" data-haptic="light">
                     <svg class="w-5 h-5" style="color: var(--text-secondary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -310,15 +310,15 @@
             </div>
 
             <div class="px-6 pb-4 flex items-center justify-between">
-                <button onclick="app.ui.closeSettings()" class="text-title-3" style="color: var(--text-secondary);">Cerrar</button>
-                <h2 class="text-title-2" style="color: var(--text-primary);">Ajustes</h2>
+                <button onclick="app.ui.closeSettings()" class="text-title-3" style="color: var(--text-secondary);">Close</button>
+                <h2 class="text-title-2" style="color: var(--text-primary);">Settings</h2>
                 <div class="w-16"></div>
             </div>
 
             <div class="px-6 pb-8 space-y-2">
                 <!-- Appearance -->
                 <div class="settings-section">
-                    <h3 class="settings-section-title">Apariencia</h3>
+                    <h3 class="settings-section-title">Appearance</h3>
                     <div class="settings-group">
                         <div class="settings-item" onclick="app.ui.toggleDarkMode()">
                             <div class="settings-icon" style="background: rgba(88, 86, 214, 0.15); color: var(--ios-indigo);">
@@ -327,8 +327,8 @@
                                 </svg>
                             </div>
                             <div class="settings-content">
-                                <span class="settings-label">Modo Oscuro</span>
-                                <span class="settings-value" id="darkModeValue">Desactivado</span>
+                                <span class="settings-label">Dark Mode</span>
+                                <span class="settings-value" id="darkModeValue">Off</span>
                             </div>
                             <div class="settings-toggle" id="darkModeToggle">
                                 <div class="toggle-knob"></div>
@@ -339,10 +339,10 @@
 
                 <!-- Notifications -->
                 <div class="settings-section">
-                    <h3 class="settings-section-title">Notificaciones</h3>
+                    <h3 class="settings-section-title">Notifications</h3>
                     <div class="px-4 py-2 mb-2">
                         <p class="text-footnote" style="font-size: 12px; line-height: 1.4;">
-                            💡 Las notificaciones aparecen como alertas nativas de iOS incluso con la app cerrada.
+                            💡 Notifications appear as native iOS alerts even when the app is closed.
                         </p>
                     </div>
                     <div class="settings-group">
@@ -353,8 +353,8 @@
                                 </svg>
                             </div>
                             <div class="settings-content">
-                                <span class="settings-label">Notificaciones Push</span>
-                                <span class="settings-value" id="notifValue">Desactivadas</span>
+                                <span class="settings-label">Push Notifications</span>
+                                <span class="settings-value" id="notifValue">Off</span>
                             </div>
                             <div class="settings-toggle" id="notifToggle">
                                 <div class="toggle-knob"></div>
@@ -368,8 +368,8 @@
                                 </svg>
                             </div>
                             <div class="settings-content">
-                                <span class="settings-label">Recordatorios</span>
-                                <span class="settings-value" id="remindersValue">1 día antes</span>
+                                <span class="settings-label">Reminders</span>
+                                <span class="settings-value" id="remindersValue">1 day before</span>
                             </div>
                             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--text-tertiary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
@@ -380,7 +380,7 @@
 
                 <!-- Data -->
                 <div class="settings-section">
-                    <h3 class="settings-section-title">Datos</h3>
+                    <h3 class="settings-section-title">Data</h3>
                     <div class="settings-group">
                         <div class="settings-item" onclick="app.ui.backupData()">
                             <div class="settings-icon" style="background: rgba(48, 209, 88, 0.15); color: var(--ios-green);">
@@ -389,8 +389,8 @@
                                 </svg>
                             </div>
                             <div class="settings-content">
-                                <span class="settings-label">Hacer Backup</span>
-                                <span class="settings-value">Exportar datos</span>
+                                <span class="settings-label">Backup Data</span>
+                                <span class="settings-value">Export data</span>
                             </div>
                             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--text-tertiary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
@@ -404,8 +404,8 @@
                                 </svg>
                             </div>
                             <div class="settings-content">
-                                <span class="settings-label">Restaurar Backup</span>
-                                <span class="settings-value">Importar datos</span>
+                                <span class="settings-label">Restore Backup</span>
+                                <span class="settings-value">Import data</span>
                             </div>
                             <svg class="w-5 h-5 flex-shrink-0" style="color: var(--text-tertiary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
@@ -416,7 +416,7 @@
 
                 <!-- About -->
                 <div class="settings-section">
-                    <h3 class="settings-section-title">Acerca de</h3>
+                    <h3 class="settings-section-title">About</h3>
                     <div class="settings-group">
                         <div class="settings-item">
                             <div class="settings-icon" style="background: rgba(175, 82, 222, 0.15); color: var(--ios-purple);">
@@ -425,7 +425,7 @@
                                 </svg>
                             </div>
                             <div class="settings-content">
-                                <span class="settings-label">Versión</span>
+                                <span class="settings-label">Version</span>
                                 <span class="settings-value">2.0.0</span>
                             </div>
                         </div>
@@ -443,18 +443,18 @@
             </div>
 
             <div class="px-6 pb-4 flex items-center justify-between">
-                <button onclick="app.ui.closeRemindersModal()" class="text-title-3" style="color: var(--text-secondary);">Cancelar</button>
-                <h2 class="text-title-2" style="color: var(--text-primary);">Recordatorios</h2>
-                <button onclick="app.ui.saveReminders()" class="text-title-3 font-semibold" style="color: var(--ios-blue);">Guardar</button>
+                <button onclick="app.ui.closeRemindersModal()" class="text-title-3" style="color: var(--text-secondary);">Cancel</button>
+                <h2 class="text-title-2" style="color: var(--text-primary);">Reminders</h2>
+                <button onclick="app.ui.saveReminders()" class="text-title-3 font-semibold" style="color: var(--ios-blue);">Save</button>
             </div>
 
             <div class="px-6 pb-8 space-y-4">
-                <p class="text-footnote" style="color: var(--text-secondary);">Selecciona cuándo quieres recibir notificaciones antes de cada cumpleaños.</p>
+                <p class="text-footnote" style="color: var(--text-secondary);">Select when you want to receive notifications before each birthday.</p>
 
                 <div class="settings-group">
                     <div class="settings-item reminder-option" data-days="0" onclick="app.ui.selectReminder(this)">
                         <div class="settings-content">
-                            <span class="settings-label">El mismo día</span>
+                            <span class="settings-label">On the day</span>
                         </div>
                         <div class="reminder-check hidden">
                             <svg class="w-5 h-5" style="color: var(--ios-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -464,7 +464,7 @@
                     </div>
                     <div class="settings-item reminder-option" data-days="1" onclick="app.ui.selectReminder(this)">
                         <div class="settings-content">
-                            <span class="settings-label">1 día antes</span>
+                            <span class="settings-label">1 day before</span>
                         </div>
                         <div class="reminder-check hidden">
                             <svg class="w-5 h-5" style="color: var(--ios-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -474,7 +474,7 @@
                     </div>
                     <div class="settings-item reminder-option" data-days="3" onclick="app.ui.selectReminder(this)">
                         <div class="settings-content">
-                            <span class="settings-label">3 días antes</span>
+                            <span class="settings-label">3 days before</span>
                         </div>
                         <div class="reminder-check hidden">
                             <svg class="w-5 h-5" style="color: var(--ios-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -484,7 +484,7 @@
                     </div>
                     <div class="settings-item reminder-option" data-days="7" onclick="app.ui.selectReminder(this)">
                         <div class="settings-content">
-                            <span class="settings-label">1 semana antes</span>
+                            <span class="settings-label">1 week before</span>
                         </div>
                         <div class="reminder-check hidden">
                             <svg class="w-5 h-5" style="color: var(--ios-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -494,7 +494,7 @@
                     </div>
                     <div class="settings-item reminder-option" data-days="14" onclick="app.ui.selectReminder(this)">
                         <div class="settings-content">
-                            <span class="settings-label">2 semanas antes</span>
+                            <span class="settings-label">2 weeks before</span>
                         </div>
                         <div class="reminder-check hidden">
                             <svg class="w-5 h-5" style="color: var(--ios-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
